@@ -1,0 +1,378 @@
+uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+INFO:     Will watch for changes in these directories: ['/home/ajaynagaraj-m/AI_Agents/Data_ingestion_agents/Data_injest_1']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [76810] using StatReload
+Invalid config for agent Anomaly_Structuring_Agent: output_schema cannot co-exist with agent transfer configurations. Setting disallow_transfer_to_parent=True, disallow_transfer_to_peers=True
+Invalid config for agent Address_Formatter_Agent: output_schema cannot co-exist with agent transfer configurations. Setting disallow_transfer_to_parent=True, disallow_transfer_to_peers=True
+2025-07-23 20:39:34,782 - Agents.agent_runner - INFO - InMemorySessionService initialized.
+INFO:     Started server process [76813]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:51752 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51752 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44474 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44474 - "GET /openapi.json HTTP/1.1" 200 OK
+2025-07-23 20:40:53,548 - app - INFO - Received request from user 'anonymous_reporter', session 'default_anomaly_session'
+2025-07-23 20:40:53,548 - app - INFO - Created new session for user 'anonymous_reporter' with ID 'default_anomaly_session'.
+2025-07-23 20:40:53,622 - google_adk.google.adk.models.google_llm - INFO - Sending out request, model: gemini-2.0-flash-lite, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2025-07-23 20:40:53,622 - google_adk.google.adk.models.google_llm - INFO - 
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+  You are an image description agent. Your task is to receive an image URL, use the 'describe_image' tool to generate a detailed textual description of the image content, and then output only that description. Do not attempt to analyze or structure the information. Just provide the raw output from the tool.
+
+  **Input:** An image URL (e.g., "https://example.com/image.jpg")
+
+  **Action:** Use the 'describe_image' tool with the provided URL.
+
+  **Output:** The exact text description returned by the 'describe_image' tool.
+
+  **Example Input:**
+  "https://example.com/images/pothole_street_light.jpg"
+
+  **Example Action (internal):**
+  `describe_image("https://example.com/images/pothole_street_light.jpg")`
+
+  **Expected Output:**
+  "The image shows a large pothole on a busy street, causing traffic to swerve. There is also a broken street light nearby."
+
+
+You are an agent. Your internal name is "Image_Descriptor_Agent".
+
+ The description about you is "An agent that uses the 'describe_image' tool to provide a detailed description of an image from a given URL."
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+get_image_description: {'image_url': {'type': <Type.STRING: 'STRING'>}} 
+-----------------------------------------------------------
+
+2025-07-23 20:40:53,622 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-07-23 20:40:54,614 - google_genai.types - WARNING - Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-07-23 20:40:54,614 - google_adk.google.adk.models.google_llm - INFO - 
+LLM Response:
+-----------------------------------------------------------
+Text:
+None
+-----------------------------------------------------------
+Function calls:
+name: get_image_description, args: {'image_url': 'https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640'}
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Wed, 23 Jul 2025 15:10:54 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=928","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"function_call":{"args":{"image_url":"https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640"},"name":"get_image_description"}}],"role":"model"},"finish_reason":"STOP","avg_logprobs":-0.00030970966397989084}],"model_version":"gemini-2.0-flash-lite","usage_metadata":{"candidates_token_count":41,"candidates_tokens_details":[{"modality":"TEXT","token_count":41}],"prompt_token_count":358,"prompt_tokens_details":[{"modality":"TEXT","token_count":358}],"total_token_count":399},"automatic_function_calling_history":[]}
+-----------------------------------------------------------
+
+2025-07-23 20:40:54,615 - Agents.Sub_Agent_1.tools.image_descriptor_tool - INFO - Attempting to describe image from URL: https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640
+2025-07-23 20:40:54,615 - Agents.Sub_Agent_1.tools.image_descriptor_tool - INFO - Attempting to describe image from URL: https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640
+2025-07-23 20:40:54,728 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-07-23 20:41:09,502 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-07-23 20:41:09,504 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-07-23 20:41:09,504 - Agents.Sub_Agent_1.tools.image_descriptor_tool - INFO - Successfully generated content from Gemini Flash model.
+2025-07-23 20:41:09,504 - Agents.Sub_Agent_1.tools.image_descriptor_tool - INFO - Successfully generated content from Gemini Flash model.
+2025-07-23 20:41:09,583 - google_adk.google.adk.models.google_llm - INFO - Sending out request, model: gemini-2.0-flash-lite, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2025-07-23 20:41:09,583 - google_adk.google.adk.models.google_llm - INFO - 
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+  You are an image description agent. Your task is to receive an image URL, use the 'describe_image' tool to generate a detailed textual description of the image content, and then output only that description. Do not attempt to analyze or structure the information. Just provide the raw output from the tool.
+
+  **Input:** An image URL (e.g., "https://example.com/image.jpg")
+
+  **Action:** Use the 'describe_image' tool with the provided URL.
+
+  **Output:** The exact text description returned by the 'describe_image' tool.
+
+  **Example Input:**
+  "https://example.com/images/pothole_street_light.jpg"
+
+  **Example Action (internal):**
+  `describe_image("https://example.com/images/pothole_street_light.jpg")`
+
+  **Expected Output:**
+  "The image shows a large pothole on a busy street, causing traffic to swerve. There is also a broken street light nearby."
+
+
+You are an agent. Your internal name is "Image_Descriptor_Agent".
+
+ The description about you is "An agent that uses the 'describe_image' tool to provide a detailed description of an image from a given URL."
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640"}],"role":"user"}
+{"parts":[{"function_call":{"args":{"image_url":"https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640"},"name":"get_image_description"}}],"role":"model"}
+{"parts":[{"function_response":{"name":"get_image_description","response":{"result":"Based on the image, here are the significant city events and anomalies:\n\n1.  **Widespread Waterlogging / Urban Flooding**\n    *   **Type:** Environmental Hazard / Infrastructure Failure (Drainage)\n    *   **Explanation:** A significant portion of the multi-lane road is submerged under deep standing water, indicating a failure of the city's drainage system to cope with rainfall, or a prolonged period of heavy rain overwhelming the system. Water levels are high enough to partially submerge vehicle tires and splash when vehicles move.\n    *   **Severity:** **High**\n        *   **Damage:** Potential for vehicle damage (engine hydro-lock, electrical issues), long-term road degradation (potholes, erosion of asphalt), and potential structural damage to underlying road infrastructure. Visible muddy banks on the left suggest erosion.\n        *   **Disruption:** Severe traffic disruption, significantly reduced vehicle speed, risk of vehicles stalling, increased commute times, and hazards for pedestrians and two-wheelers. The normal flow of urban traffic is severely compromised.\n        *   **Unusual Activity:** Roads are designed for efficient vehicle passage; deep, widespread standing water signifies an abnormal and hazardous operational state for urban infrastructure.\n\n2.  **Severe Traffic Congestion and Slowdown**\n    *   **Type:** Traffic Incident / Operational Disruption\n    *   **Explanation:** A large number of vehicles (cars, auto-rickshaws, motorcycles, truck) are clustered together, moving slowly through the waterlogged area. The presence of deep water forces vehicles to reduce speed dramatically and navigate cautiously, creating bottlenecks.\n    *   **Severity:** **Moderate**\n        *   **Disruption:** Significant delays for commuters, increased travel times, potential for frustration and elevated risk of minor collisions due to unpredictable water depths and obscured road surfaces. This is not typical rush-hour congestion but rather an impediment to movement.\n        *   **Unusual Activity:** While congestion is common, congestion *directly caused by environmental conditions like flooding* leading to near-stagnant traffic flow is anomalous and points to a breakdown in urban mobility.\n\n3.  **Active Construction Zone Contributing to Environmental Hazards**\n    *   **Type:** Infrastructure Development (Ongoing) / Environmental Hazard Contributor\n    *   **Explanation:** On the right side of the road, there's a visible construction site with large metal girders, pipes, rubble, and workers. The unpaved, muddy ground on the left, possibly related to ongoing or recent construction, shows signs of erosion or unstable terrain adjacent to the waterlogged road. Construction activities often disrupt natural drainage patterns and can contribute to runoff and debris if not properly managed.\n    *   **Severity:** **Low (as an anomaly itself, but Moderate as a contributing factor)**\n        *   **Damage/Disruption:** The construction *itself* isn't anomalous damage, but its proximity and likely contribution to drainage issues (either by blocking drains, altering water flow, or creating loose earth) exacerbates the waterlogging. The presence of construction materials near the flooded road also poses a minor hazard.\n        *   **Unusual Activity:** While construction is common, a construction zone that appears to be poorly managed in terms of drainage or erosion control, directly contributing to or exacerbating severe flooding on a main road, is an operational anomaly."}}}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+get_image_description: {'image_url': {'type': <Type.STRING: 'STRING'>}} 
+-----------------------------------------------------------
+
+2025-07-23 20:41:09,584 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-07-23 20:41:12,154 - google_adk.google.adk.models.google_llm - INFO - 
+LLM Response:
+-----------------------------------------------------------
+Text:
+The image shows widespread waterlogging and urban flooding on a multi-lane road, with significant traffic congestion. The road is submerged under deep standing water, indicating a failure of the city's drainage system. Vehicles are moving slowly through the water, causing delays. On the right side of the road, there's a construction site with metal girders, pipes, and workers, potentially contributing to the drainage issues.
+
+-----------------------------------------------------------
+Function calls:
+
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Wed, 23 Jul 2025 15:11:11 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=2322","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"text":"The image shows widespread waterlogging and urban flooding on a multi-lane road, with significant traffic congestion. The road is submerged under deep standing water, indicating a failure of the city's drainage system. Vehicles are moving slowly through the water, causing delays. On the right side of the road, there's a construction site with metal girders, pipes, and workers, potentially contributing to the drainage issues.\n"}],"role":"model"},"finish_reason":"STOP","avg_logprobs":-0.17722012883140928}],"model_version":"gemini-2.0-flash-lite","usage_metadata":{"candidates_token_count":84,"candidates_tokens_details":[{"modality":"TEXT","token_count":84}],"prompt_token_count":1088,"prompt_tokens_details":[{"modality":"TEXT","token_count":1088}],"total_token_count":1172},"automatic_function_calling_history":[]}
+-----------------------------------------------------------
+
+2025-07-23 20:41:12,230 - google_adk.google.adk.models.google_llm - INFO - Sending out request, model: gemini-2.0-flash-lite, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2025-07-23 20:41:12,231 - google_adk.google.adk.models.google_llm - INFO - 
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+  You are a structuring agent responsible for taking a raw image description and transforming it into a structured format for city anomalies.
+  You will receive the output from the The image shows widespread waterlogging and urban flooding on a multi-lane road, with significant traffic congestion. The road is submerged under deep standing water, indicating a failure of the city's drainage system. Vehicles are moving slowly through the water, causing delays. On the right side of the road, there's a construction site with metal girders, pipes, and workers, potentially contributing to the drainage issues.
+ as your input.
+  Your primary role is to parse this description to identify anomalies, their type, a detailed description, and their severity level.
+
+  The output must strictly adhere to the 'SubAgent1OutPut' Pydantic model.
+  Ensure that the 'event_type' accurately categorizes the anomaly from the predefined list:
+  - 'Structural Damage'
+  - 'Environmental Hazard'
+  - 'Traffic Anomaly'
+  - 'Unusual Activity'
+  - 'Infrastructure Issue'
+  - 'Public Safety Concern'
+  - 'Weather-Related Damage'
+  - 'Utility Disruption'
+
+  The 'description' field should provide a clear and concise summary of what is observed in the image, focusing on the anomalous elements.
+  The 'severity_level' should be classified as "Low", "Medium", or "High" based on the potential impact or urgency of the anomaly.
+
+  **Input:** A raw text description of an image (e.g., "The image shows a large pothole on a busy street, causing traffic to swerve. There is also a broken street light nearby.")
+
+  **Expected Output (structured, adhering to SubAgent1OutPut):**
+  {
+    "event_type": "Infrastructure Issue",
+    "description": "A large pothole on a busy street is causing traffic disruptions. A broken street light is also observed nearby.",
+    "severity_level": "Medium"
+  }
+
+
+You are an agent. Your internal name is "Anomaly_Structuring_Agent".
+
+ The description about you is "An agent that takes a raw image description and structures it into a predefined Pydantic model, identifying city anomalies."
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Image_Descriptor_Agent] called tool `get_image_description` with parameters: {'image_url': 'https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Image_Descriptor_Agent] `get_image_description` tool returned result: {'result': \"Based on the image, here are the significant city events and anomalies:\\n\\n1.  **Widespread Waterlogging / Urban Flooding**\\n    *   **Type:** Environmental Hazard / Infrastructure Failure (Drainage)\\n    *   **Explanation:** A significant portion of the multi-lane road is submerged under deep standing water, indicating a failure of the city's drainage system to cope with rainfall, or a prolonged period of heavy rain overwhelming the system. Water levels are high enough to partially submerge vehicle tires and splash when vehicles move.\\n    *   **Severity:** **High**\\n        *   **Damage:** Potential for vehicle damage (engine hydro-lock, electrical issues), long-term road degradation (potholes, erosion of asphalt), and potential structural damage to underlying road infrastructure. Visible muddy banks on the left suggest erosion.\\n        *   **Disruption:** Severe traffic disruption, significantly reduced vehicle speed, risk of vehicles stalling, increased commute times, and hazards for pedestrians and two-wheelers. The normal flow of urban traffic is severely compromised.\\n        *   **Unusual Activity:** Roads are designed for efficient vehicle passage; deep, widespread standing water signifies an abnormal and hazardous operational state for urban infrastructure.\\n\\n2.  **Severe Traffic Congestion and Slowdown**\\n    *   **Type:** Traffic Incident / Operational Disruption\\n    *   **Explanation:** A large number of vehicles (cars, auto-rickshaws, motorcycles, truck) are clustered together, moving slowly through the waterlogged area. The presence of deep water forces vehicles to reduce speed dramatically and navigate cautiously, creating bottlenecks.\\n    *   **Severity:** **Moderate**\\n        *   **Disruption:** Significant delays for commuters, increased travel times, potential for frustration and elevated risk of minor collisions due to unpredictable water depths and obscured road surfaces. This is not typical rush-hour congestion but rather an impediment to movement.\\n        *   **Unusual Activity:** While congestion is common, congestion *directly caused by environmental conditions like flooding* leading to near-stagnant traffic flow is anomalous and points to a breakdown in urban mobility.\\n\\n3.  **Active Construction Zone Contributing to Environmental Hazards**\\n    *   **Type:** Infrastructure Development (Ongoing) / Environmental Hazard Contributor\\n    *   **Explanation:** On the right side of the road, there's a visible construction site with large metal girders, pipes, rubble, and workers. The unpaved, muddy ground on the left, possibly related to ongoing or recent construction, shows signs of erosion or unstable terrain adjacent to the waterlogged road. Construction activities often disrupt natural drainage patterns and can contribute to runoff and debris if not properly managed.\\n    *   **Severity:** **Low (as an anomaly itself, but Moderate as a contributing factor)**\\n        *   **Damage/Disruption:** The construction *itself* isn't anomalous damage, but its proximity and likely contribution to drainage issues (either by blocking drains, altering water flow, or creating loose earth) exacerbates the waterlogging. The presence of construction materials near the flooded road also poses a minor hazard.\\n        *   **Unusual Activity:** While construction is common, a construction zone that appears to be poorly managed in terms of drainage or erosion control, directly contributing to or exacerbating severe flooding on a main road, is an operational anomaly.\"}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Image_Descriptor_Agent] said: The image shows widespread waterlogging and urban flooding on a multi-lane road, with significant traffic congestion. The road is submerged under deep standing water, indicating a failure of the city's drainage system. Vehicles are moving slowly through the water, causing delays. On the right side of the road, there's a construction site with metal girders, pipes, and workers, potentially contributing to the drainage issues.\n"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+
+-----------------------------------------------------------
+
+2025-07-23 20:41:12,231 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-07-23 20:41:14,686 - google_adk.google.adk.models.google_llm - INFO - 
+LLM Response:
+-----------------------------------------------------------
+Text:
+{
+  "event_type": "Environmental Hazard",
+  "description": "Widespread urban flooding and waterlogging on a multi-lane road, caused by a failure of the city's drainage system, with significant traffic congestion due to submerged roadways.",
+  "severity_level": "High"
+}
+-----------------------------------------------------------
+Function calls:
+
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Wed, 23 Jul 2025 15:11:14 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=2369","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"text":"{\n  \"event_type\": \"Environmental Hazard\",\n  \"description\": \"Widespread urban flooding and waterlogging on a multi-lane road, caused by a failure of the city's drainage system, with significant traffic congestion due to submerged roadways.\",\n  \"severity_level\": \"High\"\n}"}],"role":"model"},"finish_reason":"STOP","avg_logprobs":-0.24408908257117637}],"model_version":"gemini-2.0-flash-lite","usage_metadata":{"candidates_token_count":65,"candidates_tokens_details":[{"modality":"TEXT","token_count":65}],"prompt_token_count":1937,"prompt_tokens_details":[{"modality":"TEXT","token_count":1937}],"total_token_count":2002},"automatic_function_calling_history":[],"parsed":{"event_type":"Environmental Hazard","description":"Widespread urban flooding and waterlogging on a multi-lane road, caused by a failure of the city's drainage system, with significant traffic congestion due to submerged roadways.","severity_level":"High"}}
+-----------------------------------------------------------
+
+2025-07-23 20:41:14,689 - google_adk.google.adk.runners - WARNING - Event from an unknown agent: Anomaly_Structuring_Agent, event id: ot5wVuwi
+2025-07-23 20:41:14,689 - google_adk.google.adk.runners - WARNING - Event from an unknown agent: Image_Descriptor_Agent, event id: HacUtlVt
+2025-07-23 20:41:14,689 - google_adk.google.adk.runners - WARNING - Event from an unknown agent: Image_Descriptor_Agent, event id: JzZ3k7P0
+2025-07-23 20:41:14,689 - google_adk.google.adk.runners - WARNING - Event from an unknown agent: Image_Descriptor_Agent, event id: JVhy4HJ6
+2025-07-23 20:41:14,775 - google_adk.google.adk.models.google_llm - INFO - Sending out request, model: gemini-2.0-flash-lite, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2025-07-23 20:41:14,775 - google_adk.google.adk.models.google_llm - INFO - 
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are a reverse geocoding agent. Your task is to receive latitude and longitude coordinates, use the 'reverse_geocode_tool' to get the address information.
+
+**Tool Usage:**
+You will use a hypothetical tool named `reverse_geocode_tool`.
+This tool takes `latitude` (float) and `longitude` (float) as arguments.
+ **Input:** latitude and longitude coordinates.
+
+  **Action:** Use the 'reverse_geocode_tool' tool with the provided coordinates.
+
+  **Output:** The exact text description returned by the 'reverse_geocode_tool'.
+
+  **Example Input:**
+  (37.4221, -122.0841)
+
+  **Example Action (internal):**
+  `reverse_geocode_tool(37.4221, -122.0841)`
+
+
+You are an agent. Your internal name is "Reverse_Geocoding_Agent".
+
+ The description about you is "An agent that converts geographic coordinates (latitude, longitude) into a structured address using a reverse geocoding tool."
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Image_Descriptor_Agent] called tool `get_image_description` with parameters: {'image_url': 'https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Image_Descriptor_Agent] `get_image_description` tool returned result: {'result': \"Based on the image, here are the significant city events and anomalies:\\n\\n1.  **Widespread Waterlogging / Urban Flooding**\\n    *   **Type:** Environmental Hazard / Infrastructure Failure (Drainage)\\n    *   **Explanation:** A significant portion of the multi-lane road is submerged under deep standing water, indicating a failure of the city's drainage system to cope with rainfall, or a prolonged period of heavy rain overwhelming the system. Water levels are high enough to partially submerge vehicle tires and splash when vehicles move.\\n    *   **Severity:** **High**\\n        *   **Damage:** Potential for vehicle damage (engine hydro-lock, electrical issues), long-term road degradation (potholes, erosion of asphalt), and potential structural damage to underlying road infrastructure. Visible muddy banks on the left suggest erosion.\\n        *   **Disruption:** Severe traffic disruption, significantly reduced vehicle speed, risk of vehicles stalling, increased commute times, and hazards for pedestrians and two-wheelers. The normal flow of urban traffic is severely compromised.\\n        *   **Unusual Activity:** Roads are designed for efficient vehicle passage; deep, widespread standing water signifies an abnormal and hazardous operational state for urban infrastructure.\\n\\n2.  **Severe Traffic Congestion and Slowdown**\\n    *   **Type:** Traffic Incident / Operational Disruption\\n    *   **Explanation:** A large number of vehicles (cars, auto-rickshaws, motorcycles, truck) are clustered together, moving slowly through the waterlogged area. The presence of deep water forces vehicles to reduce speed dramatically and navigate cautiously, creating bottlenecks.\\n    *   **Severity:** **Moderate**\\n        *   **Disruption:** Significant delays for commuters, increased travel times, potential for frustration and elevated risk of minor collisions due to unpredictable water depths and obscured road surfaces. This is not typical rush-hour congestion but rather an impediment to movement.\\n        *   **Unusual Activity:** While congestion is common, congestion *directly caused by environmental conditions like flooding* leading to near-stagnant traffic flow is anomalous and points to a breakdown in urban mobility.\\n\\n3.  **Active Construction Zone Contributing to Environmental Hazards**\\n    *   **Type:** Infrastructure Development (Ongoing) / Environmental Hazard Contributor\\n    *   **Explanation:** On the right side of the road, there's a visible construction site with large metal girders, pipes, rubble, and workers. The unpaved, muddy ground on the left, possibly related to ongoing or recent construction, shows signs of erosion or unstable terrain adjacent to the waterlogged road. Construction activities often disrupt natural drainage patterns and can contribute to runoff and debris if not properly managed.\\n    *   **Severity:** **Low (as an anomaly itself, but Moderate as a contributing factor)**\\n        *   **Damage/Disruption:** The construction *itself* isn't anomalous damage, but its proximity and likely contribution to drainage issues (either by blocking drains, altering water flow, or creating loose earth) exacerbates the waterlogging. The presence of construction materials near the flooded road also poses a minor hazard.\\n        *   **Unusual Activity:** While construction is common, a construction zone that appears to be poorly managed in terms of drainage or erosion control, directly contributing to or exacerbating severe flooding on a main road, is an operational anomaly.\"}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Image_Descriptor_Agent] said: The image shows widespread waterlogging and urban flooding on a multi-lane road, with significant traffic congestion. The road is submerged under deep standing water, indicating a failure of the city's drainage system. Vehicles are moving slowly through the water, causing delays. On the right side of the road, there's a construction site with metal girders, pipes, and workers, potentially contributing to the drainage issues.\n"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Anomaly_Structuring_Agent] said: {\n  \"event_type\": \"Environmental Hazard\",\n  \"description\": \"Widespread urban flooding and waterlogging on a multi-lane road, caused by a failure of the city's drainage system, with significant traffic congestion due to submerged roadways.\",\n  \"severity_level\": \"High\"\n}"}],"role":"user"}
+{"parts":[{"text":"Latitude: 37.422, Longitude: -122.084"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+reverse_geocode_tool: {'longitude': {'type': <Type.NUMBER: 'NUMBER'>}, 'latitude': {'type': <Type.NUMBER: 'NUMBER'>}} 
+-----------------------------------------------------------
+
+2025-07-23 20:41:14,775 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-07-23 20:41:15,752 - google_genai.types - WARNING - Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-07-23 20:41:15,752 - google_adk.google.adk.models.google_llm - INFO - 
+LLM Response:
+-----------------------------------------------------------
+Text:
+None
+-----------------------------------------------------------
+Function calls:
+name: reverse_geocode_tool, args: {'latitude': 37.422, 'longitude': -122.084}
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Wed, 23 Jul 2025 15:11:15 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=909","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"function_call":{"args":{"latitude":37.422,"longitude":-122.084},"name":"reverse_geocode_tool"}}],"role":"model"},"finish_reason":"STOP","avg_logprobs":-0.00008339352077907986}],"model_version":"gemini-2.0-flash-lite","usage_metadata":{"candidates_token_count":9,"candidates_tokens_details":[{"modality":"TEXT","token_count":9}],"prompt_token_count":1257,"prompt_tokens_details":[{"modality":"TEXT","token_count":1257}],"total_token_count":1266},"automatic_function_calling_history":[]}
+-----------------------------------------------------------
+
+Reverse geocoding for coordinates: -122.084, 37.422
+2025-07-23 20:41:15,827 - google_adk.google.adk.models.google_llm - INFO - Sending out request, model: gemini-2.0-flash-lite, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2025-07-23 20:41:15,827 - google_adk.google.adk.models.google_llm - INFO - 
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are a reverse geocoding agent. Your task is to receive latitude and longitude coordinates, use the 'reverse_geocode_tool' to get the address information.
+
+**Tool Usage:**
+You will use a hypothetical tool named `reverse_geocode_tool`.
+This tool takes `latitude` (float) and `longitude` (float) as arguments.
+ **Input:** latitude and longitude coordinates.
+
+  **Action:** Use the 'reverse_geocode_tool' tool with the provided coordinates.
+
+  **Output:** The exact text description returned by the 'reverse_geocode_tool'.
+
+  **Example Input:**
+  (37.4221, -122.0841)
+
+  **Example Action (internal):**
+  `reverse_geocode_tool(37.4221, -122.0841)`
+
+
+You are an agent. Your internal name is "Reverse_Geocoding_Agent".
+
+ The description about you is "An agent that converts geographic coordinates (latitude, longitude) into a structured address using a reverse geocoding tool."
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Image_Descriptor_Agent] called tool `get_image_description` with parameters: {'image_url': 'https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Image_Descriptor_Agent] `get_image_description` tool returned result: {'result': \"Based on the image, here are the significant city events and anomalies:\\n\\n1.  **Widespread Waterlogging / Urban Flooding**\\n    *   **Type:** Environmental Hazard / Infrastructure Failure (Drainage)\\n    *   **Explanation:** A significant portion of the multi-lane road is submerged under deep standing water, indicating a failure of the city's drainage system to cope with rainfall, or a prolonged period of heavy rain overwhelming the system. Water levels are high enough to partially submerge vehicle tires and splash when vehicles move.\\n    *   **Severity:** **High**\\n        *   **Damage:** Potential for vehicle damage (engine hydro-lock, electrical issues), long-term road degradation (potholes, erosion of asphalt), and potential structural damage to underlying road infrastructure. Visible muddy banks on the left suggest erosion.\\n        *   **Disruption:** Severe traffic disruption, significantly reduced vehicle speed, risk of vehicles stalling, increased commute times, and hazards for pedestrians and two-wheelers. The normal flow of urban traffic is severely compromised.\\n        *   **Unusual Activity:** Roads are designed for efficient vehicle passage; deep, widespread standing water signifies an abnormal and hazardous operational state for urban infrastructure.\\n\\n2.  **Severe Traffic Congestion and Slowdown**\\n    *   **Type:** Traffic Incident / Operational Disruption\\n    *   **Explanation:** A large number of vehicles (cars, auto-rickshaws, motorcycles, truck) are clustered together, moving slowly through the waterlogged area. The presence of deep water forces vehicles to reduce speed dramatically and navigate cautiously, creating bottlenecks.\\n    *   **Severity:** **Moderate**\\n        *   **Disruption:** Significant delays for commuters, increased travel times, potential for frustration and elevated risk of minor collisions due to unpredictable water depths and obscured road surfaces. This is not typical rush-hour congestion but rather an impediment to movement.\\n        *   **Unusual Activity:** While congestion is common, congestion *directly caused by environmental conditions like flooding* leading to near-stagnant traffic flow is anomalous and points to a breakdown in urban mobility.\\n\\n3.  **Active Construction Zone Contributing to Environmental Hazards**\\n    *   **Type:** Infrastructure Development (Ongoing) / Environmental Hazard Contributor\\n    *   **Explanation:** On the right side of the road, there's a visible construction site with large metal girders, pipes, rubble, and workers. The unpaved, muddy ground on the left, possibly related to ongoing or recent construction, shows signs of erosion or unstable terrain adjacent to the waterlogged road. Construction activities often disrupt natural drainage patterns and can contribute to runoff and debris if not properly managed.\\n    *   **Severity:** **Low (as an anomaly itself, but Moderate as a contributing factor)**\\n        *   **Damage/Disruption:** The construction *itself* isn't anomalous damage, but its proximity and likely contribution to drainage issues (either by blocking drains, altering water flow, or creating loose earth) exacerbates the waterlogging. The presence of construction materials near the flooded road also poses a minor hazard.\\n        *   **Unusual Activity:** While construction is common, a construction zone that appears to be poorly managed in terms of drainage or erosion control, directly contributing to or exacerbating severe flooding on a main road, is an operational anomaly.\"}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Image_Descriptor_Agent] said: The image shows widespread waterlogging and urban flooding on a multi-lane road, with significant traffic congestion. The road is submerged under deep standing water, indicating a failure of the city's drainage system. Vehicles are moving slowly through the water, causing delays. On the right side of the road, there's a construction site with metal girders, pipes, and workers, potentially contributing to the drainage issues.\n"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Anomaly_Structuring_Agent] said: {\n  \"event_type\": \"Environmental Hazard\",\n  \"description\": \"Widespread urban flooding and waterlogging on a multi-lane road, caused by a failure of the city's drainage system, with significant traffic congestion due to submerged roadways.\",\n  \"severity_level\": \"High\"\n}"}],"role":"user"}
+{"parts":[{"text":"Latitude: 37.422, Longitude: -122.084"}],"role":"user"}
+{"parts":[{"function_call":{"args":{"latitude":37.422,"longitude":-122.084},"name":"reverse_geocode_tool"}}],"role":"model"}
+{"parts":[{"function_response":{"name":"reverse_geocode_tool","response":{"formatted_address":"1600 Amphitheatre Parkway, Mountain View, CA 94043, USA","house_number":"1600","street_name":"Amphitheatre Parkway","area_name":"null","city":"Mountain View","district":"Santa Clara County","state":"California","country":"United States","country_code":"US","postal_code":"94043"}}}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+reverse_geocode_tool: {'longitude': {'type': <Type.NUMBER: 'NUMBER'>}, 'latitude': {'type': <Type.NUMBER: 'NUMBER'>}} 
+-----------------------------------------------------------
+
+2025-07-23 20:41:15,827 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-07-23 20:41:17,888 - google_adk.google.adk.models.google_llm - INFO - 
+LLM Response:
+-----------------------------------------------------------
+Text:
+The address is 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.
+
+-----------------------------------------------------------
+Function calls:
+
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Wed, 23 Jul 2025 15:11:17 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=1938","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"text":"The address is 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.\n"}],"role":"model"},"finish_reason":"STOP","avg_logprobs":-0.00565345069536796}],"model_version":"gemini-2.0-flash-lite","usage_metadata":{"candidates_token_count":26,"candidates_tokens_details":[{"modality":"TEXT","token_count":26}],"prompt_token_count":1335,"prompt_tokens_details":[{"modality":"TEXT","token_count":1335}],"total_token_count":1361},"automatic_function_calling_history":[]}
+-----------------------------------------------------------
+
+2025-07-23 20:41:17,963 - google_adk.google.adk.models.google_llm - INFO - Sending out request, model: gemini-2.0-flash-lite, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2025-07-23 20:41:17,963 - google_adk.google.adk.models.google_llm - INFO - 
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are an address formatting agent. Your task is to receive address components from The address is 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.
+ and format them into to get the address information, and then parse that information into the structured AddressDetailsOutput Pydantic model.
+{
+  "formatted_address": "1600 Amphitheatre Parkway, Mountain View, CA 94043, USA",
+  "house_number": "1600",
+  "street_name": "Amphitheatre Parkway",
+  "area_name": "null",
+  "city": "Mountain View",
+  "district": "Santa Clara County",
+  "state": "California",
+  "country": "United States",
+  "country_code": "US",
+  "postal_code": "94043"
+}
+
+
+You are an agent. Your internal name is "Address_Formatter_Agent".
+
+ The description about you is "An agent that formats address components into a structured address string."
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Image_Descriptor_Agent] called tool `get_image_description` with parameters: {'image_url': 'https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Image_Descriptor_Agent] `get_image_description` tool returned result: {'result': \"Based on the image, here are the significant city events and anomalies:\\n\\n1.  **Widespread Waterlogging / Urban Flooding**\\n    *   **Type:** Environmental Hazard / Infrastructure Failure (Drainage)\\n    *   **Explanation:** A significant portion of the multi-lane road is submerged under deep standing water, indicating a failure of the city's drainage system to cope with rainfall, or a prolonged period of heavy rain overwhelming the system. Water levels are high enough to partially submerge vehicle tires and splash when vehicles move.\\n    *   **Severity:** **High**\\n        *   **Damage:** Potential for vehicle damage (engine hydro-lock, electrical issues), long-term road degradation (potholes, erosion of asphalt), and potential structural damage to underlying road infrastructure. Visible muddy banks on the left suggest erosion.\\n        *   **Disruption:** Severe traffic disruption, significantly reduced vehicle speed, risk of vehicles stalling, increased commute times, and hazards for pedestrians and two-wheelers. The normal flow of urban traffic is severely compromised.\\n        *   **Unusual Activity:** Roads are designed for efficient vehicle passage; deep, widespread standing water signifies an abnormal and hazardous operational state for urban infrastructure.\\n\\n2.  **Severe Traffic Congestion and Slowdown**\\n    *   **Type:** Traffic Incident / Operational Disruption\\n    *   **Explanation:** A large number of vehicles (cars, auto-rickshaws, motorcycles, truck) are clustered together, moving slowly through the waterlogged area. The presence of deep water forces vehicles to reduce speed dramatically and navigate cautiously, creating bottlenecks.\\n    *   **Severity:** **Moderate**\\n        *   **Disruption:** Significant delays for commuters, increased travel times, potential for frustration and elevated risk of minor collisions due to unpredictable water depths and obscured road surfaces. This is not typical rush-hour congestion but rather an impediment to movement.\\n        *   **Unusual Activity:** While congestion is common, congestion *directly caused by environmental conditions like flooding* leading to near-stagnant traffic flow is anomalous and points to a breakdown in urban mobility.\\n\\n3.  **Active Construction Zone Contributing to Environmental Hazards**\\n    *   **Type:** Infrastructure Development (Ongoing) / Environmental Hazard Contributor\\n    *   **Explanation:** On the right side of the road, there's a visible construction site with large metal girders, pipes, rubble, and workers. The unpaved, muddy ground on the left, possibly related to ongoing or recent construction, shows signs of erosion or unstable terrain adjacent to the waterlogged road. Construction activities often disrupt natural drainage patterns and can contribute to runoff and debris if not properly managed.\\n    *   **Severity:** **Low (as an anomaly itself, but Moderate as a contributing factor)**\\n        *   **Damage/Disruption:** The construction *itself* isn't anomalous damage, but its proximity and likely contribution to drainage issues (either by blocking drains, altering water flow, or creating loose earth) exacerbates the waterlogging. The presence of construction materials near the flooded road also poses a minor hazard.\\n        *   **Unusual Activity:** While construction is common, a construction zone that appears to be poorly managed in terms of drainage or erosion control, directly contributing to or exacerbating severe flooding on a main road, is an operational anomaly.\"}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Image_Descriptor_Agent] said: The image shows widespread waterlogging and urban flooding on a multi-lane road, with significant traffic congestion. The road is submerged under deep standing water, indicating a failure of the city's drainage system. Vehicles are moving slowly through the water, causing delays. On the right side of the road, there's a construction site with metal girders, pipes, and workers, potentially contributing to the drainage issues.\n"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Anomaly_Structuring_Agent] said: {\n  \"event_type\": \"Environmental Hazard\",\n  \"description\": \"Widespread urban flooding and waterlogging on a multi-lane road, caused by a failure of the city's drainage system, with significant traffic congestion due to submerged roadways.\",\n  \"severity_level\": \"High\"\n}"}],"role":"user"}
+{"parts":[{"text":"Latitude: 37.422, Longitude: -122.084"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Reverse_Geocoding_Agent] called tool `reverse_geocode_tool` with parameters: {'latitude': 37.422, 'longitude': -122.084}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Reverse_Geocoding_Agent] `reverse_geocode_tool` tool returned result: {'formatted_address': '1600 Amphitheatre Parkway, Mountain View, CA 94043, USA', 'house_number': '1600', 'street_name': 'Amphitheatre Parkway', 'area_name': 'null', 'city': 'Mountain View', 'district': 'Santa Clara County', 'state': 'California', 'country': 'United States', 'country_code': 'US', 'postal_code': '94043'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[Reverse_Geocoding_Agent] said: The address is 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.\n"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+
+-----------------------------------------------------------
+
+2025-07-23 20:41:17,963 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-07-23 20:41:20,755 - google_adk.google.adk.models.google_llm - INFO - 
+LLM Response:
+-----------------------------------------------------------
+Text:
+{
+  "latitude": 37.422,
+  "longitude": -122.084,
+  "formatted_address": "1600 Amphitheatre Parkway, Mountain View, CA 94043, USA",
+  "house_number": "1600",
+  "street_name": "Amphitheatre Parkway",
+  "area_name": null,
+  "city": "Mountain View",
+  "district": "Santa Clara County",
+  "state": "California",
+  "country": "United States",
+  "country_code": "US",
+  "postal_code": "94043"
+}
+-----------------------------------------------------------
+Function calls:
+
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Wed, 23 Jul 2025 15:11:20 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=2690","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"text":"{\n  \"latitude\": 37.422,\n  \"longitude\": -122.084,\n  \"formatted_address\": \"1600 Amphitheatre Parkway, Mountain View, CA 94043, USA\",\n  \"house_number\": \"1600\",\n  \"street_name\": \"Amphitheatre Parkway\",\n  \"area_name\": null,\n  \"city\": \"Mountain View\",\n  \"district\": \"Santa Clara County\",\n  \"state\": \"California\",\n  \"country\": \"United States\",\n  \"country_code\": \"US\",\n  \"postal_code\": \"94043\"\n}"}],"role":"model"},"finish_reason":"STOP","avg_logprobs":-0.000017318970468990944}],"model_version":"gemini-2.0-flash-lite","usage_metadata":{"candidates_token_count":153,"candidates_tokens_details":[{"modality":"TEXT","token_count":153}],"prompt_token_count":1700,"prompt_tokens_details":[{"modality":"TEXT","token_count":1700}],"total_token_count":1853},"automatic_function_calling_history":[],"parsed":{"latitude":37.422,"longitude":-122.084,"formatted_address":"1600 Amphitheatre Parkway, Mountain View, CA 94043, USA","house_number":"1600","street_name":"Amphitheatre Parkway","city":"Mountain View","district":"Santa Clara County","state":"California","country":"United States","country_code":"US","postal_code":"94043"}}
+-----------------------------------------------------------
+
+2025-07-23 20:41:20,758 - app - INFO - Successfully parsed agent response into CityAnomalyReport model.

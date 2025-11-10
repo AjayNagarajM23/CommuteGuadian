@@ -1,0 +1,19 @@
+{
+  "time": 1753252939.3599539,
+  "latitude": 37.422,
+  "longitude": -122.084,
+  "image_url": "https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640",
+  "user_input": "string",
+  "user_id": "anonymous_reporter",
+  "session_id": "default_anomaly_session"
+}
+
+{
+  "time": 1753252939.3599539,
+  "latitude": 12.990109,
+  "longitude": 77.724627,
+  "image_url": "https://images.indianexpress.com/2025/05/Bengaluru-Rains-flooding.jpg?w=640",
+  "user_input": "string",
+  "user_id": "anonymous_reporter",
+  "session_id": "default_anomaly_session"
+}
